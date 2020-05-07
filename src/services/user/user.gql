@@ -1,0 +1,94 @@
+"""
+Modelo Usuario define la informacion de una persona 
+"""
+type User {
+  email: String!
+  profile: Profile
+}
+
+
+"""
+Modelo Profile define la informacion de una persona sobre el email y name 
+"""
+type Profile {
+  firstName: String
+  lastName: String
+  email: String
+  password: String
+  telephone: String
+  dateOfBirth: String
+  cardId: String
+  typeCardId: String
+  state: String
+  country: String
+  city: String
+  zipCode: String
+  address: String
+  province: String
+  gender: String
+  relationship: String
+  roles: String
+}
+
+"""
+Modelo que define el conjunto de servicios 
+"""
+type Query {
+  """ 
+  Query que solicita información personal del usuario logueada
+  se obtiene mediante el token que se encuentre en la session previamente establecida
+  """
+  me: User,
+  
+
+}
+"""
+Servivios que realizan operaciones o modificaciones en la base de datos de IBM
+"""
+type Mutation {
+ 
+  """
+  Servicio que permite  el  registro  de usuario  
+  ***@param*** **email** : Correo del usuario  
+  ***@param*** **password** : Contraseña del usuario  
+  ***@param*** **firstName** : Nombre completo del usuario  
+  ***@param*** **lastName** : Apellido completo del usuario  
+  ***@param*** **telephone** : Telefono completo del usuario  
+  ***@param*** **dateOfBirth** : Fecha nacimiento completo del usuario  
+  ***@param*** **cardId** : Numero de identificacion completo del usuario  
+  ***@param*** **typeCardId** : Tipo de  identificacion completo del usuario  
+  ***@param*** **country** : Pais del usuario  
+  ***@param*** **state** : Estado del pais del usuario  
+  ***@param*** **city** : Ciudad del pais o estado del usuario  
+  ***@param*** **zipCode** : Codigo postal de la ciudad   
+  ***@param*** **address** : Direccion donde vive el usuario  
+  ***@param*** **province** : Provinicia del pais  
+  ***@param*** **gender** : Genero del usuario  
+  ***@param*** **relationship** : Estado civil del usuario
+  ***@param*** **sendEmail** : Si desea recibir correo de registro al usuario  
+  ***@param*** **role** : Rol que desea tener ese usuario 
+  ***@return*** **Response** : Modelo tipo Profile  
+  """
+  register(
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  telephone: String!
+  dateOfBirth: String!
+  cardId: String!
+  typeCardId: String
+  state: String
+  country: String!
+  city: String
+  zipCode: String
+  address: String
+  province: String
+  gender: String!
+  relationship: String
+  sendEmail: Boolean
+  role: String
+    ): User
+  
+
+}
